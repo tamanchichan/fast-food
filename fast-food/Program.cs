@@ -1,4 +1,14 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using fast_food.Areas.Identity.Data;
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("FastFoodDbConnection") ?? throw new InvalidOperationException("Connection string 'FastFoodDbConnection' not found.");
+
+builder.Services.AddDbContext<FastFoodDb>(options =>
+    options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<FastFoodUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<FastFoodDb>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -17,6 +27,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
