@@ -6,19 +6,19 @@ namespace fast_food.Models
     {
         public Guid Id { get; set; }
 
-        public List<Item>? Items { get; set; }
+        public HashSet<CartItem>? CartItems { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "SubTotal can not be less than zero")]
-        public decimal? SubTotal
+        public decimal SubTotal
         {
             get
             {
-                return Math.Round(Items.Sum(i => i.Price), 2); // think about 'quantity' later
+                return Math.Round(CartItems.Sum(ci => ci.Item.Price * ci.Quantity), 2);
             }
         }
 
         [Range(0, double.MaxValue, ErrorMessage = "Total can not be less than zero")]
-        public decimal? Total
+        public decimal Total
         {
             get
             {
