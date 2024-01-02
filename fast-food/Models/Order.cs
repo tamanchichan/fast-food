@@ -6,7 +6,7 @@ namespace fast_food.Models
     {
         public Guid Id { get; set; }
 
-        public HashSet<CartItem>? CartItems { get; set; }
+        public HashSet<CartItem>? CartItems { get; set; } = new HashSet<CartItem>();
 
         [Range(0, double.MaxValue, ErrorMessage = "SubTotal can not be less than zero")]
         public decimal SubTotal
