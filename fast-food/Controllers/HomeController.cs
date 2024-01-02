@@ -1,6 +1,7 @@
 ﻿using fast_food.Areas.Identity.Data;
 using fast_food.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace fast_food.Controllers
@@ -32,10 +33,52 @@ namespace fast_food.Controllers
 
             if (item == null)
             {
-                return Problem();
+                throw new ArgumentOutOfRangeException(nameof(item));
             }
 
             return View(item);
+        }
+
+        // Cart's view
+        [Route("cart")]
+        public IActionResult Cart()
+        {
+            Cart cart = _context.Cart
+                .Include(c => c.CartItems)
+                .ThenInclude(ci => ci.Item)
+                .FirstOrDefault();
+
+            return View(cart);
+        }
+
+        // AddToCart's view, create a 'CartItem', or if exists already, increment 'CartItem.Quantity'
+        public IActionResult AddToCart(Guid id)
+        {
+            Item item = _context.Item.First(i => i.Id == id);
+
+            if (item == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(item));
+            }
+
+            CartItem cartItem = _context.CartItems.First(i => i.ItemId == id);
+
+            if (cartItem == null)
+            {
+                cartItem = new CartItem()
+                {
+                    Id = Guid.NewGuid(),
+                    ItemId = id,
+                    Quantity = 1,
+                };
+            } else
+            {
+                cartItem.Quantity++;
+            }
+
+            _context.SaveChanges();
+
+            return Ok();
         }
 
         public IActionResult Privacy()

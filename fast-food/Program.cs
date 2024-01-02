@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using fast_food.Areas.Identity.Data;
+using fast_food.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,0 +1,16 @@
+﻿@model Cart
+
+<div>
+    <h2>Cart</h2>
+    <div>
+        <table>
+            @foreach (CartItem cartItem in Model.CartItems)
+            {
+                <tr>
+                    <td>@cartItem.Item.Name</td>
+                    <td>@cartItem.Quantity</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
