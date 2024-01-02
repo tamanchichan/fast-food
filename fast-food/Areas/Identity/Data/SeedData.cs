@@ -41,6 +41,7 @@ namespace fast_food.Areas.Identity.Data
             //}
             #endregion
 
+            #region Insert Data By Procedure
             if (!context.Item.Any()) // If there are no items in the database, seed it
             {
                 void InsertItem()
@@ -81,6 +82,7 @@ namespace fast_food.Areas.Identity.Data
 
                 InsertItem();
             }
+            #endregion
         }
         private static void ItemStoreProcedure(FastFoodDb context)
         {
