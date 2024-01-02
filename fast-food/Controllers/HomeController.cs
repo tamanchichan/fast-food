@@ -48,6 +48,11 @@ namespace fast_food.Controllers
                 .ThenInclude(ci => ci.Item)
                 .FirstOrDefault();
 
+            if (cart == null)
+            {
+                cart = new Cart() { Id = Guid.NewGuid() };
+            }
+
             return View(cart);
         }
 
@@ -55,6 +60,11 @@ namespace fast_food.Controllers
         public IActionResult AddToCart(Guid id)
         {
             Cart cart = _context.Cart.FirstOrDefault();
+
+            if (cart == null)
+            {
+                cart = new Cart() { Id = Guid.NewGuid() };
+            }
 
             CartItem cartItem = _context.CartItems.FirstOrDefault(ci => ci.ItemId == id);
 
