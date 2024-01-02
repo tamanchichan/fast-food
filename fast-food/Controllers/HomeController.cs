@@ -17,7 +17,7 @@ namespace fast_food.Controllers
             _context = context;
         }
 
-        // Index's view, display a list of 'Item' ordered by 'Item.Code'
+        // Index's action, display a list of 'Item' ordered by 'Item.Code'
         public IActionResult Index()
         {
             List<Item> items = _context.Item.OrderBy(i => i.Code).ToList();
@@ -25,7 +25,7 @@ namespace fast_food.Controllers
             return View(items);
         }
 
-        // ItemDetails' view, display an 'Item' based of 'Item.Id'
+        // ItemDetails' action, display an 'Item' based of 'Item.Id'
         [Route("item-details/{id}")]
         public IActionResult ItemDetails(Guid id)
         {
@@ -39,7 +39,7 @@ namespace fast_food.Controllers
             return View(item);
         }
 
-        // Cart's view
+        // Cart's action
         [Route("cart")]
         public IActionResult Cart()
         {
@@ -56,7 +56,7 @@ namespace fast_food.Controllers
             return View(cart);
         }
 
-        // AddToCart's view, create a 'CartItem', or if exists already, increment 'CartItem.Quantity'
+        // AddToCart's action, create a 'CartItem', or if exists already, increment 'CartItem.Quantity'
         public IActionResult AddToCart(Guid id)
         {
             Cart cart = _context.Cart.FirstOrDefault();
