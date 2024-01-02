@@ -25,10 +25,5 @@ namespace fast_food.Models
                 return Math.Round((decimal)SubTotal * 1.12m, 2); // '1.12m' represents the tax
             }
         }
-
-        public Cart()
-        {
-            Id = Guid.NewGuid();
-        }
     }
 }
