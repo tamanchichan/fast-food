@@ -83,6 +83,17 @@ namespace fast_food.Areas.Identity.Data
                 InsertItem();
             }
             #endregion
+
+            if (!context.Cart.Any())
+            {
+                Cart cart = new Cart()
+                {
+                    Id = Guid.NewGuid()
+                };
+
+                context.Cart.Add(cart);
+                context.SaveChanges();
+            }
         }
         private static void ItemStoreProcedure(FastFoodDb context)
         {
