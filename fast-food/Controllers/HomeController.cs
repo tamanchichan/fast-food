@@ -23,6 +23,19 @@ namespace fast_food.Controllers
             return View(items);
         }
 
+        [Route("item-details/{id}")]
+        public IActionResult ItemDetails(Guid id)
+        {
+            Item item = _context.Item.First(i => i.Id == id);
+
+            if (item == null)
+            {
+                return Problem();
+            }
+
+            return View(item);
+        }
+
         public IActionResult Privacy()
         {
             return View();
