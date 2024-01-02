@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using fast_food.Areas.Identity.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
 var connectionString = builder.Configuration.GetConnectionString("FastFoodDbConnection") ?? throw new InvalidOperationException("Connection string 'FastFoodDbConnection' not found.");
 
 builder.Services.AddDbContext<FastFoodDb>(options =>
@@ -14,6 +16,13 @@ builder.Services.AddDefaultIdentity<FastFoodUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    IServiceProvider services = scope.ServiceProvider;
+
+    await SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

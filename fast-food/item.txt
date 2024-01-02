@@ -1,0 +1,4 @@
+1|Deluxe Wonton Soup|A large pork wonton soup containing chicken, pork, and shrimp. An appetizer for 1-2 people.|12,95
+2|Wonton Soup|A small pork wonton soup. An appetizer for 1 person.|6,50
+3|Hot & Sour Soup|A large soup filled with mushrooms, tofu and silky egg ribbons. An appetizer for 1-2 people.|12,95
+4|Consomme Soup|A small soup made from broth with green onions, dry noodles on the side. An appetizer for 1 person|3,95
