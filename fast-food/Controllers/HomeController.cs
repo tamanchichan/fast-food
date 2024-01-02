@@ -54,14 +54,9 @@ namespace fast_food.Controllers
         // AddToCart's view, create a 'CartItem', or if exists already, increment 'CartItem.Quantity'
         public IActionResult AddToCart(Guid id)
         {
-            Item item = _context.Item.First(i => i.Id == id);
+            Cart cart = _context.Cart.FirstOrDefault();
 
-            if (item == null)
-            {
-                throw new ArgumentOutOfRangeException(nameof(item));
-            }
-
-            CartItem cartItem = _context.CartItems.First(i => i.ItemId == id);
+            CartItem cartItem = _context.CartItems.FirstOrDefault(ci => ci.ItemId == id);
 
             if (cartItem == null)
             {
@@ -71,6 +66,10 @@ namespace fast_food.Controllers
                     ItemId = id,
                     Quantity = 1,
                 };
+
+                _context.CartItems.Add(cartItem);
+
+                cart.CartItems.Add(cartItem);
             } else
             {
                 cartItem.Quantity++;
@@ -78,7 +77,7 @@ namespace fast_food.Controllers
 
             _context.SaveChanges();
 
-            return Ok();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

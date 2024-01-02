@@ -95,7 +95,7 @@ namespace fast_food.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cart");
+                    b.ToTable("Cart", (string)null);
                 });
 
             modelBuilder.Entity("fast_food.Models.CartItem", b =>
@@ -124,7 +124,7 @@ namespace fast_food.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("CartItems");
+                    b.ToTable("CartItems", (string)null);
                 });
 
             modelBuilder.Entity("fast_food.Models.Item", b =>
@@ -150,7 +150,7 @@ namespace fast_food.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Item");
+                    b.ToTable("Item", (string)null);
                 });
 
             modelBuilder.Entity("fast_food.Models.Order", b =>
@@ -161,7 +161,7 @@ namespace fast_food.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Order");
+                    b.ToTable("Order", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
