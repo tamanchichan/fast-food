@@ -1,18 +1,104 @@
+/* CLASS */
+.container {
+    margin-inline: auto;
+    width: min(100% - 30px, 1080px);
+}
+
+.underline-effect{
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
+.underline-effect::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2.5px;
+    background-color: rgba(128, 128, 128, 0.75);
+    transition: all 0.25s ease-in-out;
+}
+
+.underline-effect:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+/* HTML */
 html {
-  font-size: 14px;
+    font-size: 15px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+/* H1, H2, H3 */
+h1 { font-size: 30px; }
+
+h2 { font-size: 25px; }
+
+h3 { font-size: 20px; }
+
+/* HEADER */
+header {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    height: 50px;
+    line-height: 50px;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+header .flex {
+    justify-content: space-between;
 }
 
-body {
-  margin-bottom: 60px;
+header .header-title h1 {
+    line-height: 50px;
+}
+
+header .header-title h1 a {
+    text-decoration: none;
+}
+
+header .header-menu {
+
+}
+
+header .header-menu nav ul {
+    display: flex;
+}
+
+header .header-menu nav ul li {
+    font-size: 20px;
+}
+
+header .header-menu nav ul li + li {
+    margin-left: 15px;
+}
+
+header .header-menu nav ul li a {
+    color: #000;
+    text-decoration: none
+}
+
+/* MAIN */
+main {
+    margin: 25px 0px;
+    height: 100vh;
+}
+
+/* FOOTER */
+footer {
+    border-top: 1px solid rgba(128, 128, 128, 0.5);
+    bottom: 0px;
+    height: 100px;
+    line-height: 100px;
+    position: fixed;
+    width: 100%
+}
+
+footer .copyright {
+    text-align: center;
+    width: 100%;
 }
