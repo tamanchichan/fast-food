@@ -130,12 +130,17 @@ footer {
     border-top: 1px solid rgba(128, 128, 128, 0.5);
     bottom: 0px;
     height: 100px;
-    line-height: 100px;
+    /*line-height: 100px;*/
     position: fixed;
     width: 100%
 }
 
-footer .copyright {
+footer.flex {
+    align-items: center;
+    justify-content: center;
+}
+
+footer .container .copyright {
     text-align: center;
-    width: 100%;
+    /*width: 100%;*/
 }
