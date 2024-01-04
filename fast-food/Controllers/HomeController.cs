@@ -56,6 +56,30 @@ namespace fast_food.Controllers
             return View(cart);
         }
 
+        // ClearCart's action, remove all 'CartItem' from the 'Cart'
+        public IActionResult ClearCart()
+        {
+            Cart cart = _context.Cart
+                .Include(c => c.CartItems)
+                .FirstOrDefault();
+
+            if (cart == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(cart));
+            }
+
+            foreach (CartItem cartItem in cart.CartItems)
+            {
+                cart.CartItems.Remove(cartItem);
+
+                _context.CartItems.Remove(cartItem);
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Cart");
+        }
+
         // AddToCart's action, create a 'CartItem', or if exists already, increment 'CartItem.Quantity'
         public IActionResult AddToCart(Guid id)
         {

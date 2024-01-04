@@ -3,6 +3,9 @@
 <div>
     <h2>Cart</h2>
     <div>
+        <button onclick="location.href='@Url.Action("ClearCart", "Home")'">Clear</button>
+    </div>
+    <div>
         <table>
             @foreach (CartItem cartItem in Model.CartItems)
             {
