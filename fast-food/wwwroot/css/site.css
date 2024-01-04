@@ -1,7 +1,38 @@
+:root {
+    --header-bg-color: #fff;
+    --body-bg-color: #f7f7f7;
+    --footer-bg-color: #fff;
+}
+
 /* CLASS */
 .container {
     margin-inline: auto;
     width: min(100% - 30px, 1080px);
+}
+
+.menu {
+    margin: 0 auto;
+}
+
+.menu .menu-category {
+    text-align: center
+}
+
+.menu tr {
+    height: 40px;
+}
+
+.menu tr:hover {
+    border-bottom: 1px solid #000;
+}
+
+.menu tr:hover::after {
+    transition: all 1s ease-in-out;
+}
+
+.menu th, td {
+    padding: 15px;
+    padding-bottom: 0px;
 }
 
 .underline-effect{
@@ -30,9 +61,13 @@
     display: flex;
 }
 
-/* HTML */
+/* HTML, BODY */
 html {
     font-size: 15px;
+}
+
+body {
+    background-color: var(--body-bg-color);
 }
 
 /* H1, H2, H3 */
@@ -44,6 +79,7 @@ h3 { font-size: 20px; }
 
 /* HEADER */
 header {
+    background-color: var(--header-bg-color);
     border-bottom: 1px solid rgba(128, 128, 128, 0.5);
     height: 50px;
     line-height: 50px;
@@ -84,12 +120,13 @@ header .header-menu nav ul li a {
 
 /* MAIN */
 main {
+    /*height: 100vh;*/
     margin: 25px 0px;
-    height: 100vh;
 }
 
 /* FOOTER */
 footer {
+    background-color: var(--footer-bg-color);
     border-top: 1px solid rgba(128, 128, 128, 0.5);
     bottom: 0px;
     height: 100px;

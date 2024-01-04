@@ -11,19 +11,23 @@
 
 @model List<Item>
 
+@{
+    ViewData["Title"] = "Home Page";
+}
+
 <div>
-    <h1>Fast Food Menu</h1>
+    <h2>Fast Food Menu</h2>
     <div>
-        <table>
+        <table class="menu">
             @foreach(Item item in Model)
             {
                 @if(item.Code == "1")
                 {
-                    <tr><th>Appetizers</th></tr>
+                    <tr><th class="menu-category" colspan="4">Appetizers</th></tr>
                 }
                 @if(item.Code == "8")
                 {
-                    <tr><th>Mixed Greens</th></tr>
+                    <tr><th class="menu-category" colspan="4">Mixed Greens</th></tr>
                 }
                 <tr>
                     <td>@item.Code.</td>
