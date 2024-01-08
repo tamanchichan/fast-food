@@ -61,7 +61,11 @@
     display: flex;
 }
 
-/* HTML, BODY */
+/* HTML */
+a {
+    user-select: auto; /* had to add this because of my 'reset' file */
+}
+
 html {
     font-size: 15px;
 }
