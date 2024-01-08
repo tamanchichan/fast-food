@@ -6,37 +6,44 @@
 
 <div>
     <h2>Cart</h2>
-    <div>
-        @* <button onclick="location.href='@Url.Action("ClearCart", "Home")'">Clear</button> *@
-        <a asp-action="ClearCart" asp-controller="Home">Clear</a>
-    </div>
-    <div>
-        <table class="cart">
-            <tr>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-            </tr>
-            @foreach (CartItem cartItem in Model.CartItems)
-            {
+    @if(Model.CartItems.Count == 0)
+    {
+        <p>Cart is EMPTY</p>
+    }
+    else
+    {
+        <div>
+            @* <button onclick="location.href='@Url.Action("ClearCart", "Home")'">Clear</button> *@
+            <a asp-action="ClearCart" asp-controller="Home">Clear</a>
+        </div>
+        <div>
+            <table class="cart">
                 <tr>
-                    <td>@cartItem.Item.Name</td>
-                    <td>@cartItem.Item.Price</td>
-                    <td>@cartItem.Quantity</td>
-                    <td>@(@cartItem.Item.Price * @cartItem.Quantity)</td>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
                 </tr>
-            }
-            <tr>
-                @* <td>SubtoTal:</td> *@
-                @* <td>$@Model.SubTotal</td> *@
-                <td>SubTotal: $@Model.SubTotal</td>
-            </tr>
-            <tr>
-                @* <td>Total:</td> *@
-                @* <td>$@Model.Total</td> *@
-                <td>Total: $@Model.Total</td>
-            </tr>
-        </table>
-    </div>
+                @foreach (CartItem cartItem in Model.CartItems)
+                {
+                    <tr>
+                        <td>@cartItem.Item.Name</td>
+                        <td>@cartItem.Item.Price</td>
+                        <td>@cartItem.Quantity</td>
+                        <td>@(@cartItem.Item.Price * @cartItem.Quantity)</td>
+                    </tr>
+                }
+                <tr>
+                    @* <td>SubtoTal:</td> *@
+                    @* <td>$@Model.SubTotal</td> *@
+                    <td>SubTotal: $@Model.SubTotal</td>
+                </tr>
+                <tr>
+                    @* <td>Total:</td> *@
+                    @* <td>$@Model.Total</td> *@
+                    <td>Total: $@Model.Total</td>
+                </tr>
+            </table>
+        </div>
+    }
 </div>
