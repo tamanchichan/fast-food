@@ -10,6 +10,20 @@
     width: min(100% - 30px, 1080px);
 }
 
+.cart {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.cart tr {
+    height: 30px;
+    line-height: 30px;
+}
+
+.cart th, .cart td {
+    padding: 0px 15px;
+}
+
 .menu {
     margin: 0 auto;
 }
@@ -30,7 +44,7 @@
     transition: all 1s ease-in-out;
 }
 
-.menu th, td {
+.menu th, .menu td {
     padding: 15px;
     padding-bottom: 0px;
 }
