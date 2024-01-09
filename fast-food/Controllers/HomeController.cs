@@ -22,7 +22,16 @@ namespace fast_food.Controllers
         {
             List<Item> items = _context.Item.OrderBy(i => i.Code).ToList();
 
-            return View(items);
+            //return View(items);
+
+            Cart cart = _context.Cart
+                .Include(c => c.CartItems)
+                .ThenInclude(ci => ci.Item)
+                .FirstOrDefault();
+
+            CartWithItemVM cartWithItemVM = new CartWithItemVM() { Cart = cart, Items = items.ToHashSet() };
+
+            return View(cartWithItemVM);
         }
 
         // ItemDetails' action, return a view of 'Item' based on 'Item.Id'
