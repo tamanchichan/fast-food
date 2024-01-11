@@ -32,7 +32,7 @@
                         <td>@cartItem.Quantity</td>
                         <td>@(@cartItem.Item.Price * @cartItem.Quantity)</td>
                         <td>
-                            <a asp-action="RemoveCartItem" asp-controller="Home" asp-route-id="@cartItem.Id">-</a>
+                            <a asp-action="RemoveCartItem" asp-controller="Home" asp-route-id="@cartItem.Id" class="button decrement-button">-</a>
                         </td>
                     </tr>
                 }
