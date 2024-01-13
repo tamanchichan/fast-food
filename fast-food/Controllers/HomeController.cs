@@ -65,6 +65,25 @@ namespace fast_food.Controllers
             return View(cart);
         }
 
+        public IActionResult AddCartItem(Guid id)
+        {
+            Cart cart = _context.Cart
+                .Include(c => c.CartItems)
+                .FirstOrDefault();
+
+            CartItem cartItem = cart.CartItems.Where(ci => ci.Id == id).FirstOrDefault();
+
+            if (cartItem == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(cartItem));
+            }
+
+            cartItem.Quantity++;
+            _context.SaveChanges();
+
+            return RedirectToAction("Cart");
+        }
+
         // RemoveCartItem's action, decrement 'CartItem.Quantity' from the 'Cart' if the quantity is greater than one, else remove 'CartItem' from the 'Cart'
         public IActionResult RemoveCartItem(Guid id)
         {
@@ -90,30 +109,6 @@ namespace fast_food.Controllers
                 cartItem.Quantity -= 1;
                 _context.SaveChanges();
             }
-
-            return RedirectToAction("Cart");
-        }
-
-        // ClearCart's action, remove all 'CartItem' from the 'Cart'
-        public IActionResult ClearCart()
-        {
-            Cart cart = _context.Cart
-                .Include(c => c.CartItems)
-                .FirstOrDefault();
-
-            if (cart == null)
-            {
-                throw new ArgumentOutOfRangeException(nameof(cart));
-            }
-
-            foreach (CartItem cartItem in cart.CartItems)
-            {
-                cart.CartItems.Remove(cartItem);
-
-                _context.CartItems.Remove(cartItem);
-            }
-
-            _context.SaveChanges();
 
             return RedirectToAction("Cart");
         }
@@ -150,6 +145,30 @@ namespace fast_food.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        // ClearCart's action, remove all 'CartItem' from the 'Cart'
+        public IActionResult ClearCart()
+        {
+            Cart cart = _context.Cart
+                .Include(c => c.CartItems)
+                .FirstOrDefault();
+
+            if (cart == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(cart));
+            }
+
+            foreach (CartItem cartItem in cart.CartItems)
+            {
+                cart.CartItems.Remove(cartItem);
+
+                _context.CartItems.Remove(cartItem);
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Cart");
         }
 
         public IActionResult Privacy()

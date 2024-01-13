@@ -17,6 +17,12 @@
     box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
     transition: all 0.25s ease-out;
 }
+
+.button:hover {
+    text-shadow: 0px 0px 2px #000;
+    transition: all 0.25s ease-in-out;
+}
+
 /* 'cart' class */
 .cart {
     margin: 0 auto;
@@ -53,13 +59,21 @@
 .decrement-button {
     background-color: #f33;
     color: #fff;
-    text-shadow: 0px 0px 2px #000;
 }
 
 .decrement-button:hover {
     background-color: #e50000;
     color: #fff;
-    transition: all 0.25s ease-in-out;
+}
+
+.increment-button {
+    background-color: #2268cf;
+    color: #fff;
+}
+
+.increment-button:hover {
+    background-color: #0a58ca;
+    color: #fff;
 }
 
 .menu {
