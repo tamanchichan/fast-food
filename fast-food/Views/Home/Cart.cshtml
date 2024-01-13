@@ -35,7 +35,7 @@
                             <td>@cartItem.Item.Name</td>
                             <td>$@cartItem.Item.Price</td>
                             <td>@cartItem.Quantity</td>
-                            <td>@(@cartItem.Item.Price * @cartItem.Quantity)</td>
+                            <td>$@(@cartItem.Item.Price * @cartItem.Quantity)</td>
                             <td>
                                 <a asp-action="AddCartItem" asp-controller="Home" asp-route-id="@cartItem.Id" class="button increment-button">+</a>
                                 <a asp-action="RemoveCartItem" asp-controller="Home" asp-route-id="@cartItem.Id" class="button decrement-button">-</a>
