@@ -17,20 +17,33 @@
     box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
     transition: all 0.25s ease-out;
 }
-
+/* 'cart' class */
 .cart {
     margin: 0 auto;
-    width: 50%;
 }
 
 .cart tr {
+    border-bottom: 1px solid #000;
     height: 30px;
     line-height: 30px;
 }
 
-.cart th, .cart td {
+.cart tr th, .cart tr td {
     padding: 0px 15px;
 }
+
+.cart tr td:nth-child(1) {
+    text-align: center;
+}
+
+.cart .cart-tr-subtotal, .cart .cart-tr-total {
+    border-bottom: none;
+}
+
+.cart .cart-tr-subtotal th, .cart .cart-tr-total th {
+    text-align: right;
+}
+/* 'cart' class */
 
 .container {
     margin-inline: auto;

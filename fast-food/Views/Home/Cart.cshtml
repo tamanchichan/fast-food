@@ -18,34 +18,40 @@
         </div>
         <div>
             <table class="cart">
-                <tr>
-                    <th>Item</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                </tr>
-                @foreach (CartItem cartItem in Model.CartItems)
-                {
+                <thead>
                     <tr>
-                        <td>@cartItem.Item.Name</td>
-                        <td>@cartItem.Item.Price</td>
-                        <td>@cartItem.Quantity</td>
-                        <td>@(@cartItem.Item.Price * @cartItem.Quantity)</td>
-                        <td>
-                            <a asp-action="RemoveCartItem" asp-controller="Home" asp-route-id="@cartItem.Id" class="button decrement-button">-</a>
-                        </td>
+                        <th>Num.</th>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
                     </tr>
-                }
-                <tr>
-                    @* <td>SubtoTal:</td> *@
-                    @* <td>$@Model.SubTotal</td> *@
-                    <td>SubTotal: $@Model.SubTotal</td>
-                </tr>
-                <tr>
-                    @* <td>Total:</td> *@
-                    @* <td>$@Model.Total</td> *@
-                    <td>Total: $@Model.Total</td>
-                </tr>
+                </thead>
+                <tbody>
+                    @foreach (CartItem cartItem in Model.CartItems)
+                    {
+                        <tr>
+                            <td>@cartItem.Item.Code.</td>
+                            <td>@cartItem.Item.Name</td>
+                            <td>$@cartItem.Item.Price</td>
+                            <td>@cartItem.Quantity</td>
+                            <td>@(@cartItem.Item.Price * @cartItem.Quantity)</td>
+                            <td>
+                                <a asp-action="RemoveCartItem" asp-controller="Home" asp-route-id="@cartItem.Id" class="button decrement-button">-</a>
+                            </td>
+                        </tr>
+                    }
+                    <tr class="cart-tr-subtotal">
+                        <th colspan="5">SubTotal:</th>
+                        <td colspan="1">$@Model.SubTotal</td>
+                        @* <td>SubTotal: $@Model.SubTotal</td> *@
+                    </tr>
+                    <tr class="cart-tr-total">
+                        <th colspan="5">Total:</th>
+                        <td colspan="1">$@Model.Total</td>
+                        @* <td>Total: $@Model.Total</td> *@
+                    </tr>
+                </tbody>
             </table>
         </div>
     }
