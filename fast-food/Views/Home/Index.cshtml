@@ -35,7 +35,14 @@
                     @* <td>@item.Description</td> *@
                     <td>$@item.Price</td>
                     <td><a asp-action="AddToCart" asp-route-id="@item.Id">Add to Cart</a></td>
-                    <td>@Model.Cart.CartItems.Where(ci => ci.ItemId == item.Id).FirstOrDefault()?.Quantity</td>
+                    <td>
+                        @if (@Model.Cart.CartItems.Where(ci => ci.ItemId == item.Id).FirstOrDefault()?.Quantity != null)
+                        {
+                            <span class="menu-cart-item-quantity">
+                                @Model.Cart.CartItems.Where(ci => ci.ItemId == item.Id).FirstOrDefault()?.Quantity
+                            </span>
+                        }
+                    </td>
                 </tr>
             }
         </table>

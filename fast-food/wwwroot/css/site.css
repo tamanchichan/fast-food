@@ -101,6 +101,20 @@
     padding-bottom: 0px;
 }
 
+.menu th:nth-child(5), .menu td:nth-child(5) {
+    padding: 0px;
+    width: 25px;
+}
+
+.menu-cart-item-quantity {
+    /*border: 1px solid rgba(0, 0, 0, 0.75);*/
+    border-radius: 50%;
+    box-shadow: 0px 0px 2.5px #000;
+    display: inline-block;
+    text-align: center;
+    width: 25px;
+}
+
 .underline-effect{
     display: inline-block;
     text-align: center;
