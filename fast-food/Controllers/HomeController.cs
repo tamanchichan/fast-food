@@ -23,6 +23,7 @@ namespace fast_food.Controllers
         }
 
         // Menu's action, return a view of a list of 'Item' ordered by 'Item.Code'
+        [Route("menu")]
         public IActionResult Menu()
         {
             List<Item> items = _context.Item.OrderBy(i => i.Code).ToList();
