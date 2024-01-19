@@ -1,0 +1,39 @@
+﻿@model CartWithItemVM
+
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<div>
+    <h2>Fast Food Menu</h2>
+    <div>
+        <table class="menu">
+            @foreach(Item item in Model.Items)
+            {
+                @if(item.Code == "1")
+                {
+                    <tr><th class="menu-category" colspan="4">Appetizers</th></tr>
+                }
+                @if(item.Code == "8")
+                {
+                    <tr><th class="menu-category" colspan="4">Mixed Greens</th></tr>
+                }
+                <tr>
+                    <td>@item.Code.</td>
+                    <td><a asp-action="ItemDetails" asp-route-id="@item.Id">@item.Name</a></td>
+                    @* <td>@item.Description</td> *@
+                    <td>$@item.Price</td>
+                    <td><a asp-action="AddToCart" asp-route-id="@item.Id">Add to Cart</a></td>
+                    <td>
+                        @if (@Model.Cart.CartItems.Where(ci => ci.ItemId == item.Id).FirstOrDefault()?.Quantity != null)
+                        {
+                            <span class="menu-cart-item-quantity">
+                                @Model.Cart.CartItems.Where(ci => ci.ItemId == item.Id).FirstOrDefault()?.Quantity
+                            </span>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

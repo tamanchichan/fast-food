@@ -17,8 +17,13 @@ namespace fast_food.Controllers
             _context = context;
         }
 
-        // Index's action, return a view of a list of 'Item' ordered by 'Item.Code'
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        // Menu's action, return a view of a list of 'Item' ordered by 'Item.Code'
+        public IActionResult Menu()
         {
             List<Item> items = _context.Item.OrderBy(i => i.Code).ToList();
 
