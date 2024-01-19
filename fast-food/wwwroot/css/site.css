@@ -23,7 +23,6 @@
     transition: all 0.25s ease-in-out;
 }
 
-/* 'cart' class */
 .cart {
     margin: 0 auto;
 }
@@ -49,10 +48,9 @@
 .cart .cart-tr-subtotal th, .cart .cart-tr-total th {
     text-align: right;
 }
-/* 'cart' class */
 
 .container {
-    margin-inline: auto;
+    /*margin-inline: auto;*/
     width: min(100% - 30px, 1080px);
 }
 
@@ -74,6 +72,13 @@
 .increment-button:hover {
     background-color: #0a58ca;
     color: #fff;
+}
+
+.index {
+    background-color: rgba(128, 128, 128, 0.5);
+    margin-inline: 0px;
+    margin-top: -25px;
+    height: calc(100vh - 75px);
 }
 
 .menu {
