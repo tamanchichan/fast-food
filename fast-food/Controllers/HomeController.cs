@@ -19,8 +19,21 @@ namespace fast_food.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            int code;
+
+            List<Item> items = _context.Item
+                //.OrderBy(i => i.Code)
+                .ToList();
+
+
+            if (items == null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
+
+            return View(items);
         }
+
 
         public IActionResult Privacy()
         {
