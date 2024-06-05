@@ -1,4 +1,9 @@
+using fast_food.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<FastFoodDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("FastFoodDbContext") ?? throw new InvalidOperationException("Connection string 'FastFoodDbContext not found")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
