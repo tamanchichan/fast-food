@@ -1,0 +1,20 @@
+﻿A|Combo A|8,50
+B|Combo B|8,50
+C|Combo C|9,00
+D|Combo D|10,00
+E|Combo E|10,00
+1|Hamburger|4,50
+2|Cheeseburger|4,50
+3|Double Cheeseburger|6,50
+4|Veggie Burger|5,50
+5|Chicken Burger|5,50
+6|Bacon Cheeseburger|7,00
+7|Fish Burger|6,50
+8|BBQ Chicken Burger|6,50
+9|Turkey Burger|6,00
+10|Avocado Burger|7,00
+11|Mushroom Swiss Burger|7,50
+12|Pulled Pork Burger|8,00
+13|Buffalo Chicken Burger|7,50
+14|Teriyaki Burger|7,00
+15|Sriracha Burger|8,00
