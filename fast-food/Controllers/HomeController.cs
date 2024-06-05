@@ -1,4 +1,5 @@
-﻿using fast_food.Models;
+﻿using fast_food.Data;
+using fast_food.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,9 +9,12 @@ namespace fast_food.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly FastFoodDbContext _context;
+
+        public HomeController(ILogger<HomeController> logger, FastFoodDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
