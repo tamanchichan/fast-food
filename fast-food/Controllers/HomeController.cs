@@ -34,7 +34,6 @@ namespace fast_food.Controllers
             return View(items);
         }
 
-
         public IActionResult Privacy()
         {
             return View();

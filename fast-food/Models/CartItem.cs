@@ -9,19 +9,10 @@ namespace fast_food.Models
         [Key]
         public Guid Id { get; set; }
 
-        [Required]
-        [MinLength(1, ErrorMessage = "'Code' has to be at least 1 character length")]
-        [DisplayName("Code")]
-        public string Code { get; set; }
+        [ForeignKey("ItemId")]
+        public Guid ItemId { get; set; }
 
-        [Required]
-        [MinLength(3, ErrorMessage = "'Name' has to be at least 3 character length")]
-        [DisplayName("Name")]
-        public string Name { get; set; }
-
-        [Required]
-        [DisplayName("Price")]
-        public decimal Price { get; set; }
+        public Item Item { get; set; }
 
         [ForeignKey("CartId")]
         public Guid CartId { get; set; }

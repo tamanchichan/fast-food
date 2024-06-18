@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fast_food.Data;
 
@@ -11,9 +12,10 @@ using fast_food.Data;
 namespace fast_food.Migrations
 {
     [DbContext(typeof(FastFoodDbContext))]
-    partial class FastFoodDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240618171002_CartItem_N_OrderItem_Models_Updated")]
+    partial class CartItem_N_OrderItem_Models_Updated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
