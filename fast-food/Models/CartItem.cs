@@ -18,5 +18,8 @@ namespace fast_food.Models
         public Guid CartId { get; set; }
 
         public Cart Cart { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "Quantity can not be less than zero.")]
+        public int Quantity { get; set; }
     }
 }
