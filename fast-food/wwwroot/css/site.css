@@ -4,11 +4,12 @@ body {
 
 header {
     border-bottom: 1px solid rgba(128, 128, 128, 0.5);
-    height: 150px;
+    height: 100px;
 }
 
 main {
     margin: 50px 0px;
+    min-height: calc(100vh - 100px - 50px - 50px);
 }
 
 nav, ul, li {
@@ -16,19 +17,16 @@ nav, ul, li {
 }
 
 nav {
-    height: 150px;
+    height: 100px;
     justify-content: center;
 }
 
-nav ul li {
-    /*height: 150px;*/
-}
-
 nav ul li a {
-    border: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
     display: inline-block;
     font-size: 30px;
-    line-height: 150px;
+    line-height: 100px;
     padding: 0px 30px;
 }
 
@@ -45,7 +43,6 @@ p {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 15px 30px;
     place-content: center;
-    min-height: calc(100vh - 150px - 50px - 50px);
 }
 
 .item {
