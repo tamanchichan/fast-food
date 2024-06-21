@@ -21,6 +21,7 @@
                     <td>@cartItem.Quantity</td>
                     <td>$@(@cartItem.Item.Price * cartItem.Quantity)</td>
                     <td><a asp-action="IncrementCartItem" asp-controller="Home" asp-route-id="@cartItem.Id">+</a></td>
+                    <td><a asp-action="DecrementCartItem" asp-controller="Home" asp-route-id="@cartItem.Id">-</a></td>
                 </tr>
             }
             <tr class="tr-subtotal">

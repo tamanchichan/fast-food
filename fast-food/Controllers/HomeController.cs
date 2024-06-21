@@ -99,13 +99,6 @@ namespace fast_food.Controllers
 
         public IActionResult IncrementCartItem(Guid id)
         {
-            Cart cart = _context.Cart.FirstOrDefault();
-
-            if (cart == null)
-            {
-                cart = new Cart() { Id = Guid.NewGuid() };
-            }
-
             CartItem cartItem = _context.CartItem.FirstOrDefault(ci => ci.Id == id);
 
             if (cartItem == null)
@@ -115,7 +108,36 @@ namespace fast_food.Controllers
 
             cartItem.Quantity += 1;
 
-            cart.CartItems.Add(cartItem);
+            _context.SaveChanges();
+
+            return RedirectToAction("Cart");
+        }
+
+        public IActionResult DecrementCartItem(Guid id)
+        {
+            Cart cart = _context.Cart.FirstOrDefault();
+
+            if (cart == null)
+            {
+                throw new ArgumentNullException(nameof(cart));
+            }
+
+            CartItem cartItem = _context.CartItem.FirstOrDefault(ci => ci.Id == id);
+
+            if (cartItem == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(cartItem));
+            }
+
+            if (cartItem.Quantity == 1)
+            {
+                cart.CartItems.Remove(cartItem);
+
+                _context.CartItem.Remove(cartItem);
+            }
+
+            cartItem.Quantity -= 1;
+
             _context.SaveChanges();
 
             return RedirectToAction("Cart");
