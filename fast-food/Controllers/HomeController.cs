@@ -143,6 +143,29 @@ namespace fast_food.Controllers
             return RedirectToAction("Cart");
         }
 
+        public IActionResult ClearCart()
+        {
+            Cart cart = _context.Cart
+                .Include(c => c.CartItems)
+                .FirstOrDefault();
+
+            if (cart == null)
+            {
+                throw new ArgumentNullException(nameof(cart));
+            }
+
+            foreach (CartItem cartItem in cart.CartItems)
+            {
+                cart.CartItems.Remove(cartItem);
+
+                _context.CartItem.Remove(cartItem);
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Cart");
+        }
+
         public IActionResult Privacy()
         {
             return View();
