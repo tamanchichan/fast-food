@@ -166,6 +166,51 @@ namespace fast_food.Controllers
             return RedirectToAction("Cart");
         }
 
+        public IActionResult PlaceOrder()
+        {
+            Cart cart = _context.Cart
+                .Include(c => c.CartItems)
+                .FirstOrDefault();
+
+            if (cart == null)
+            {
+                throw new ArgumentNullException(nameof(cart));
+            }
+
+            Order order = new Order()
+            {
+                Id = Guid.NewGuid(),
+                DateOfCreation = DateTime.Now
+            };
+
+            foreach (CartItem cartItem in cart.CartItems)
+            {
+                OrderItem orderItem = new OrderItem()
+                {
+                    Id = Guid.NewGuid(),
+                    ItemId = cartItem.ItemId,
+                    Item = cartItem.Item,
+                    Order = order,
+                    OrderId = order.Id,
+                    Quantity = cartItem.Quantity,
+                };
+
+                order.OrderItems.Add(orderItem);
+
+                _context.OrderItem.Add(orderItem);
+
+                cart.CartItems.Remove(cartItem);
+
+                _context.CartItem.Remove(cartItem);
+            }
+
+            _context.Order.Add(order);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Privacy()
         {
             return View();

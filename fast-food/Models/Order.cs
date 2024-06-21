@@ -13,12 +13,12 @@ namespace fast_food.Models
         [DisplayName("Date of Creation")]
         public DateTime DateOfCreation { get; set; } = DateTime.Now;
 
-        public HashSet<OrderItem> Items { get; set; } = new HashSet<OrderItem>();
+        public HashSet<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
 
         // Calculates the subtotal by summing up the prices of all items in the cart
         public decimal SubTotal
         {
-            get { return Items.Sum(i => i.Item.Price); }
+            get { return OrderItems.Sum(i => i.Item.Price); }
         }
 
         // Calculates the total by adding a 12% tax to the subtotal
