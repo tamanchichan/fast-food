@@ -12,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (CartItem cartItem in Model.Items)
+            @foreach (CartItem cartItem in Model.CartItems)
             {
                 <tr>
                     <td>@cartItem.Item.Code</td>
@@ -20,6 +20,7 @@
                     <td>$@cartItem.Item.Price</td>
                     <td>@cartItem.Quantity</td>
                     <td>$@(@cartItem.Item.Price * cartItem.Quantity)</td>
+                    <td><a asp-action="IncrementCartItem" asp-controller="Home" asp-route-id="@cartItem.Id">+</a></td>
                 </tr>
             }
             <tr class="tr-subtotal">

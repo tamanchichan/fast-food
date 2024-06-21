@@ -7,12 +7,12 @@ namespace fast_food.Models
         [Key]
         public Guid Id { get; set; }
 
-        public HashSet<CartItem> Items { get; set;} = new HashSet<CartItem>();
+        public HashSet<CartItem> CartItems { get; set;} = new HashSet<CartItem>();
 
         // Calculates the subtotal by summing up the prices of all items in the cart
         public decimal SubTotal
         {
-            get { return Math.Round(Items.Sum(i => i.Item.Price), 2); }
+            get { return Math.Round(CartItems.Sum(i => i.Item.Price), 2); }
         }
 
         // Calculates the total by adding a 12% tax to the subtotal

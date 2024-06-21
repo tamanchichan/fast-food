@@ -38,7 +38,7 @@ namespace fast_food.Controllers
         public IActionResult Cart()
         {
             Cart cart = _context.Cart
-                .Include(c => c.Items)
+                .Include(c => c.CartItems)
                 .ThenInclude(i => i.Item)
                 .FirstOrDefault();
 
@@ -51,7 +51,6 @@ namespace fast_food.Controllers
             }
 
             return View(cart);
-
         }
 
         public IActionResult AddItemToCart(Guid id)
@@ -70,7 +69,7 @@ namespace fast_food.Controllers
                 throw new ArgumentOutOfRangeException(nameof(item));
             }
 
-            CartItem cartItem = _context.CartItem.FirstOrDefault(cI => cI.ItemId == id);
+            CartItem cartItem = _context.CartItem.FirstOrDefault(ci => ci.ItemId == id);
 
             if (cartItem == null)
             {
@@ -84,7 +83,7 @@ namespace fast_food.Controllers
                     Quantity = 1
                 };
 
-                cart.Items.Add(cartItem);
+                cart.CartItems.Add(cartItem);
 
                 _context.CartItem.Add(cartItem);
             }
@@ -96,6 +95,30 @@ namespace fast_food.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult IncrementCartItem(Guid id)
+        {
+            Cart cart = _context.Cart.FirstOrDefault();
+
+            if (cart == null)
+            {
+                cart = new Cart() { Id = Guid.NewGuid() };
+            }
+
+            CartItem cartItem = _context.CartItem.FirstOrDefault(ci => ci.Id == id);
+
+            if (cartItem == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(cartItem));
+            }
+
+            cartItem.Quantity += 1;
+
+            cart.CartItems.Add(cartItem);
+            _context.SaveChanges();
+
+            return RedirectToAction("Cart");
         }
 
         public IActionResult Privacy()
