@@ -11,7 +11,7 @@
             <div class="item">
                 <p>@item.Code</p>
                 <p>@item.Name</p>
-                <p>@item.Price</p>
+                <p>$@item.Price</p>
                 <p><a asp-action="AddItemToCart" asp-controller="Home" asp-route-id="@item.Id">Add To Cart</a></p>
             </div>
         }

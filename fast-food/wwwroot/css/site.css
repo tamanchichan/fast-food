@@ -34,6 +34,23 @@ p {
     margin: 0; /* delete this after reset.css from cdn is updated */
 }
 
+table {
+    width: 70%;
+    margin: 0 auto;
+}
+
+table > * {
+    text-align: center;
+}
+
+table tr {
+    border-bottom: 1px solid #000;
+}
+
+table tr td {
+    padding: 10px 0px;
+}
+
 .flex {
     display: flex;
 }
@@ -62,4 +79,17 @@ p {
 
 .item p:nth-child(3) {
     text-align: right;
+}
+
+.tr-subtotal, .tr-total {
+    border-bottom: none;
+}
+
+.tr-subtotal th, .tr-total th {
+    text-align: right;
+    padding: 5px 0px;
+}
+
+.tr-subtotal td, .tr-total td {
+    padding: 5px 0px;
 }

@@ -1,6 +1,7 @@
 ﻿using fast_food.Data;
 using fast_food.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace fast_food.Controllers
@@ -32,6 +33,25 @@ namespace fast_food.Controllers
             }
 
             return View(items);
+        }
+
+        public IActionResult Cart()
+        {
+            Cart cart = _context.Cart
+                .Include(c => c.Items)
+                .ThenInclude(i => i.Item)
+                .FirstOrDefault();
+
+            if (cart == null)
+            {
+                cart = new Cart() { Id = Guid.NewGuid() };
+
+                _context.Cart.Add(cart);
+                _context.SaveChanges();
+            }
+
+            return View(cart);
+
         }
 
         public IActionResult AddItemToCart(Guid id)

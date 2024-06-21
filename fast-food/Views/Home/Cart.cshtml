@@ -1,0 +1,35 @@
+﻿@model Cart
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartItem cartItem in Model.Items)
+            {
+                <tr>
+                    <td>@cartItem.Item.Code</td>
+                    <td>@cartItem.Item.Name</td>
+                    <td>$@cartItem.Item.Price</td>
+                    <td>@cartItem.Quantity</td>
+                    <td>$@(@cartItem.Item.Price * cartItem.Quantity)</td>
+                </tr>
+            }
+            <tr class="tr-subtotal">
+                <th colspan="4">SubTotal:</th>
+                <td colspan="1">$@Model.SubTotal</td>
+            </tr>
+            <tr class="tr-total">
+                <th colspan="4">Total:</th>
+                <td colspan="1">$@Model.Total</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
