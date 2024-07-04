@@ -1,0 +1,18 @@
+﻿@model HashSet<Order>
+
+@{
+    ViewData["Title"] = "Order Page";
+}
+
+<div>
+    @foreach (Order order in Model)
+    {
+        <div class="order">
+            <div class="flex">
+                <h3>Nº: @order.Id</h3>
+                <h4>Date: @order.DateOfCreation</h4>
+            </div>
+            <h4 class="order-total">Total: $@order.Total</h4>
+        </div>
+    }
+</div>

@@ -1,6 +1,6 @@
 ﻿@model Cart
 
-<div>
+<div class="cart">
     <table>
         <thead>
             <tr>
@@ -20,22 +20,22 @@
                     <td>$@cartItem.Item.Price</td>
                     <td>@cartItem.Quantity</td>
                     <td>$@(@cartItem.Item.Price * cartItem.Quantity)</td>
-                    <td><a asp-action="IncrementCartItem" asp-controller="Home" asp-route-id="@cartItem.Id">+</a></td>
-                    <td><a asp-action="DecrementCartItem" asp-controller="Home" asp-route-id="@cartItem.Id">-</a></td>
+                    <td><a asp-action="IncrementCartItem" asp-controller="Home" asp-route-id="@cartItem.Id" class="increment-btn button">+</a></td>
+                    <td><a asp-action="DecrementCartItem" asp-controller="Home" asp-route-id="@cartItem.Id" class="decrement-btn button">-</a></td>
                 </tr>
             }
             <tr class="tr-subtotal">
-                <th colspan="4">SubTotal:</th>
+                <th colspan="6">SubTotal:</th>
                 <td colspan="1">$@Model.SubTotal</td>
             </tr>
             <tr class="tr-total">
-                <th colspan="4">Total:</th>
+                <th colspan="6">Total:</th>
                 <td colspan="1">$@Model.Total</td>
             </tr>
         </tbody>
     </table>
-    <div>
-        <a asp-action="ClearCart" asp-controller="Home">Clear Cart</a>
-        <a asp-action="PlaceOrder" asp-controller="Home">Place Order</a>
+    <div class="clear-n-place flex">
+        <a asp-action="ClearCart" asp-controller="Home" class="clear-btn button">Clear Cart</a>
+        <a asp-action="PlaceOrder" asp-controller="Home" class="place-btn button">Place Order</a>
     </div>
 </div>

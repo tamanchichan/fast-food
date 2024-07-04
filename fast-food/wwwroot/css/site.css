@@ -1,3 +1,20 @@
+/* class */
+.button {
+    border: 1px solid #000;
+    border-radius: 2.5px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+    color: #000;
+    text-decoration: none;
+    padding: 0px 15px;
+}
+
+.flex {
+    display: flex;
+}
+/* class */
+
+/* html */
 body {
     font-size: 15px;
 }
@@ -22,20 +39,53 @@ nav {
 }
 
 nav ul li a {
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
+    /*border-left: 1px solid #000;*/
+    /*border-right: 1px solid #000;*/
+    color: #000;
     display: inline-block;
     font-size: 30px;
     line-height: 100px;
     padding: 0px 30px;
+    text-decoration: none;
 }
 
 p {
-    margin: 0; /* delete this after reset.css from cdn is updated */
+    margin: 0;
+}
+/* html */
+
+/* menu */
+.items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 15px 30px;
+    place-content: center;
 }
 
+.item {
+    border: 1px solid rgba(128, 128, 128, 0.75);
+    border-radius: 10px;
+    margin: 0px;
+    padding: 15px;
+    30px;
+}
+
+.item p:nth-child(1) {
+    text-align: left;
+}
+
+.item p:nth-child(2) {
+    text-align: center;
+}
+
+.item p:nth-child(3) {
+    text-align: right;
+}
+/* menu */
+
+/* cart */
 table {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -51,34 +101,8 @@ table tr td {
     padding: 10px 0px;
 }
 
-.flex {
-    display: flex;
-}
-
-.items {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 15px 30px;
-    place-content: center;
-}
-
-.item {
-    border: 1px solid rgba(128, 128, 128, 0.75);
-    border-radius: 10px;
-    margin: 0px;
-    padding: 15px; 30px;
-}
-
-.item p:nth-child(1) {
-    text-align: left;
-}
-
-.item p:nth-child(2) {
-    text-align: center;
-}
-
-.item p:nth-child(3) {
-    text-align: right;
+table tr td:nth-child(6), table tr td:nth-child(7) {
+    width: 50px;
 }
 
 .tr-subtotal, .tr-total {
@@ -93,3 +117,73 @@ table tr td {
 .tr-subtotal td, .tr-total td {
     padding: 5px 0px;
 }
+
+.increment-btn {
+    background-color: #2268cf;
+}
+
+.increment-btn:hover {
+    background-color: #0a58ca;
+}
+
+.decrement-btn {
+    background-color: #f33;
+}
+
+.decrement-btn:hover {
+    background-color: #e50000;
+}
+
+.increment-btn, .decrement-btn {
+    color: #fff;
+}
+
+.increment-btn:hover, .decrement-btn:hover {
+    color: #fff;
+}
+
+.clear-n-place {
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.clear-btn {
+
+}
+
+.place-btn {
+
+}
+/* cart */
+
+/* order */
+.order {
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding: 15px 30px;
+}
+
+.order + .order {
+    margin-top: 50px;
+}
+
+.order .flex {
+    justify-content: space-between;
+    height: 30px;
+    line-height: 30px;
+}
+
+.order .flex h3, .order .flex h4 {
+    height: 30px;
+    line-height: 30px;
+}
+
+.order .flex h4 {
+    font-weight: 400;
+}
+
+.order .order-total {
+    margin-top: 15px;
+    text-align: right;
+}
+/* order */

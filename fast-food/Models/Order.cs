@@ -18,13 +18,13 @@ namespace fast_food.Models
         // Calculates the subtotal by summing up the prices of all items in the cart
         public decimal SubTotal
         {
-            get { return OrderItems.Sum(i => i.Item.Price); }
+            get { return Math.Round(OrderItems.Sum(i => i.Item.Price), 2); }
         }
 
         // Calculates the total by adding a 12% tax to the subtotal
         public decimal Total
         {
-            get { return SubTotal * 1.12m; }
+            get { return Math.Round(SubTotal * 1.12m, 2); }
         }
     }
 }

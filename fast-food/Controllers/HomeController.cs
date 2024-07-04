@@ -166,6 +166,16 @@ namespace fast_food.Controllers
             return RedirectToAction("Cart");
         }
 
+        public IActionResult Order()
+        {
+            HashSet<Order> orders = _context.Order
+                .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Item)
+                .ToHashSet();
+
+            return View(orders);
+        }
+
         public IActionResult PlaceOrder()
         {
             Cart cart = _context.Cart
