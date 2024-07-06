@@ -1,0 +1,46 @@
+﻿@model Order
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<div class="order-details">
+    <div class="flex">
+        <h2>@Model.Id</h2>
+        <h4>@Model.DateOfCreation</h4>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (OrderItem orderItem in Model.OrderItems)
+            {
+                <tr>
+                    <td>@orderItem.Item.Code</td>
+                    <td>@orderItem.Item.Name</td>
+                    <td>@orderItem.Item.Price</td>
+                    <td>@orderItem.Quantity</td>
+                    <td>$@(@orderItem.Item.Price * @orderItem.Quantity)</td>
+                </tr>
+            }
+            <tr class="tr-subtotal">
+                <th colspan="4">SubTotal:</th>
+                <td colspan="1">$@Model.SubTotal</td>
+            </tr>
+            <tr class="tr-total">
+                <th colspan="4">Total:</th>
+                <td colspan="1">$@Model.Total</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <a asp-action="Order" asp-controller="Home" class="go-back-btn button">Go Back</a>
+    </div>
+</div>

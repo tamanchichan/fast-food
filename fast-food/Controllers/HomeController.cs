@@ -221,6 +221,21 @@ namespace fast_food.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult OrderDetails(Guid id)
+        {
+            Order order = _context.Order
+                .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Item)
+                .FirstOrDefault(o => o.Id == id);
+
+            if (order == null)
+            {
+                throw new ArgumentNullException(nameof(order));
+            }
+
+            return View(order);
+        }
+
         public IActionResult Privacy()
         {
             return View();

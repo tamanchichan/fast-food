@@ -52,6 +52,26 @@ nav ul li a {
 p {
     margin: 0;
 }
+
+/* table */
+table {
+    width: 100%;
+    margin: 0 auto;
+}
+
+table > * {
+    text-align: center;
+}
+
+table tr {
+    border-bottom: 1px solid #000;
+}
+
+table tr td {
+    padding: 10px 0px;
+}
+/* table */
+
 /* html */
 
 /* menu */
@@ -84,37 +104,20 @@ p {
 /* menu */
 
 /* cart */
-table {
-    width: 100%;
-    margin: 0 auto;
-}
-
-table > * {
-    text-align: center;
-}
-
-table tr {
-    border-bottom: 1px solid #000;
-}
-
-table tr td {
-    padding: 10px 0px;
-}
-
-table tr td:nth-child(6), table tr td:nth-child(7) {
+.cart table tr td:nth-child(6), table tr td:nth-child(7) {
     width: 50px;
 }
 
-.tr-subtotal, .tr-total {
+.cart .tr-subtotal, .tr-total {
     border-bottom: none;
 }
 
-.tr-subtotal th, .tr-total th {
+.cart .tr-subtotal th, .cart .tr-total th {
     text-align: right;
     padding: 5px 0px;
 }
 
-.tr-subtotal td, .tr-total td {
+.cart .tr-subtotal td, .cart .tr-total td {
     padding: 5px 0px;
 }
 
@@ -187,3 +190,35 @@ table tr td:nth-child(6), table tr td:nth-child(7) {
     text-align: right;
 }
 /* order */
+
+/* order-details */
+.order-details .flex {
+    justify-content: space-between;
+}
+
+.order-details .flex h2, .order-details .flex h4 {
+    height: 30px;
+    line-height: 30px;
+}
+
+.order-details table {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.order-details .tr-subtotal, .tr-total {
+    border-bottom: none;
+}
+
+.order-details .tr-subtotal th, .order-details .tr-total th {
+    text-align: right;
+    padding: 5px 0px;
+}
+
+.order-details .tr-subtotal td, .order-details .tr-total td {
+    padding: 5px 0px;
+}
+
+.order-details table tbody .tr-subtotal td, .order-details table tbody .tr-total td {
+    width: 100px;
+}
