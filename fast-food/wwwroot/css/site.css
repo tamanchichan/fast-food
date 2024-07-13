@@ -17,6 +17,7 @@
 /* html */
 body {
     font-size: 15px;
+    background-color: #fff;
 }
 
 header {
@@ -26,7 +27,7 @@ header {
 
 main {
     padding: 50px 0px;
-    min-height: calc(100vh - 100px - 50px - 50px);
+    min-height: calc(100vh - 100px);
 }
 
 nav, ul, li {
@@ -39,8 +40,6 @@ nav {
 }
 
 nav ul li a {
-    /*border-left: 1px solid #000;*/
-    /*border-right: 1px solid #000;*/
     color: #000;
     display: inline-block;
     font-size: 30px;
