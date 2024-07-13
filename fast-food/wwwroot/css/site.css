@@ -160,14 +160,28 @@ table tr td {
 /* cart */
 
 /* order */
+.orders a { 
+    display: block;
+}
+
+.a-order + .a-order {
+    margin-top: 50px;
+}
+
+.orders .order:hover {
+    background-color: #e5e5e5;
+    transition: all ease 0.25s;
+}
+
+.orders a {
+    color: #000;
+    text-decoration: none;
+}
+
 .order {
     border: 1px solid #000;
     border-radius: 15px;
     padding: 15px 30px;
-}
-
-.order + .order {
-    margin-top: 50px;
 }
 
 .order .flex {

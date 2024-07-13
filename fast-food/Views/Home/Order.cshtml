@@ -4,17 +4,17 @@
     ViewData["Title"] = "Order";
 }
 
-<div>
+<div class="orders">
     @foreach (Order order in Model)
     {
-        <div class="order">
-            <a asp-action="OrderDetails" asp-controller="Home" asp-route-id="@order.Id">
+        <a asp-action="OrderDetails" asp-controller="Home" asp-route-id="@order.Id" class="a-order">
+            <div class="order">
                 <div class="flex">
                     <h3>Nº: @order.Id</h3>
                     <h4>Date: @order.DateOfCreation</h4>
                 </div>
                 <h4 class="order-total">Total: $@order.Total</h4>
-            </a>
-        </div>
+            </div>
+        </a>
     }
 </div>
