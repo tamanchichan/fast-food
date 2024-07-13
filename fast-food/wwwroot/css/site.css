@@ -25,7 +25,7 @@ header {
 }
 
 main {
-    margin: 50px 0px;
+    padding: 50px 0px;
     min-height: calc(100vh - 100px - 50px - 50px);
 }
 
@@ -165,7 +165,7 @@ table tr td {
 }
 
 .a-order + .a-order {
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 .orders .order:hover {
