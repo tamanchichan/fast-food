@@ -171,6 +171,7 @@ namespace fast_food.Controllers
             HashSet<Order> orders = _context.Order
                 .Include(o => o.OrderItems)
                 .ThenInclude(oi => oi.Item)
+                .OrderByDescending(o => o.DateOfCreation)
                 .ToHashSet();
 
             return View(orders);
